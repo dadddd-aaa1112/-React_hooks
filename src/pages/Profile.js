@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Repos } from '../components/Repos'
 import { GithubContext } from '../context/github/githubContext'
 export const Profile = ({ match }) => {
 	const { getUser, getRepos, loading, user, repos } = useContext(GithubContext)
-	const urlName = match.params.name
+	// const urlName = match.params.name
+	const { name: urlName } = useParams()
 
 	useEffect(() => {
 		getUser(urlName)
